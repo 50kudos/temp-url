@@ -1,0 +1,123 @@
+{
+    "type": "object",
+    "additionalProperties": false,
+    "oneOf": [
+        {
+            "required": [
+                "acting_user_id",
+                "name"
+            ]
+        },
+        {
+            "required": [
+                "acting_user_id",
+                "investible_id"
+            ]
+        }
+    ],
+    "properties": {
+        "acting_user_id": {
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36
+        },
+        "investible_id": {
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36
+        },
+        "stage_id": {
+            "type": "string",
+            "minLength": 36,
+            "maxLength": 36
+        },
+        "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+        },
+        "description": {
+            "type": "string",
+            "maxLength": 7340032
+        },
+        "open_for_investment": {
+            "type": "boolean"
+        },
+        "user_ids": {
+            "type": "array",
+            "items": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+            },
+            "additionalItems": false,
+            "minItems": 1,
+            "maxItems": 100
+        },
+        "completion_estimate": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "label_list": {
+            "type": "array",
+            "maxItems": 50,
+            "uniqueItems": true,
+            "items": {
+                "type": "string",
+                "maxLength": 255
+            }
+        },
+        "uploaded_files": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                    "content_type": {
+                        "type": "string",
+                        "minLength": 3,
+                        "maxLength": 255
+                    },
+                    "content_length": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "path": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                    }
+                },
+                "required": [
+                    "content_type",
+                    "content_length",
+                    "path"
+                ]
+            },
+            "minItems": 0,
+            "maxItems": 100
+        },
+        "required_approvers": {
+            "type": "array",
+            "additionalItems": false,
+            "minItems": 0,
+            "maxItems": 50,
+            "items": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+            }
+        },
+        "required_reviewers": {
+            "type": "array",
+            "additionalItems": false,
+            "minItems": 0,
+            "maxItems": 50,
+            "items": {
+                "type": "string",
+                "minLength": 36,
+                "maxLength": 36
+            }
+        }
+    }
+}
