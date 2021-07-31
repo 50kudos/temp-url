@@ -1,6 +1,20 @@
 {
     "type": "object",
     "additionalProperties": false,
+    "oneOf": [
+        {
+            "required": [
+                "acting_user_id",
+                "name"
+            ]
+        },
+        {
+            "required": [
+                "acting_user_id",
+                "investible_id"
+            ]
+        }
+    ],
     "properties": {
         "acting_user_id": {
             "type": "string",

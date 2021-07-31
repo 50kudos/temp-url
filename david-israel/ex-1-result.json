@@ -1,0 +1,138 @@
+{
+  "$defs": {
+    "http://localhost/Investible": {
+      "$defs": {
+        "Request": {
+          "properties": {
+            "acting_user_id": {
+              "maxLength": 36,
+              "minLength": 36,
+              "type": "string"
+            },
+            "completion_estimate": {
+              "format": "date-time",
+              "type": "string"
+            },
+            "description": {
+              "maxLength": 7340032,
+              "type": "string"
+            },
+            "label_list": {
+              "items": {
+                "maxLength": 255,
+                "type": "string"
+              },
+              "maxItems": 50,
+              "type": "array"
+            },
+            "open_for_investment": {
+              "type": "boolean"
+            },
+            "required_approvers": {
+              "items": {
+                "maxLength": 36,
+                "minLength": 36,
+                "type": "string"
+              },
+              "maxItems": 50,
+              "minItems": 0,
+              "type": "array"
+            },
+            "required_reviewers": {
+              "items": {
+                "maxLength": 36,
+                "minLength": 36,
+                "type": "string"
+              },
+              "maxItems": 50,
+              "minItems": 0,
+              "type": "array"
+            },
+            "stage_id": {
+              "maxLength": 36,
+              "minLength": 36,
+              "type": "string"
+            },
+            "uploaded_files": {
+              "items": {
+                "properties": {
+                  "content_length": {
+                    "maximum": 2147483647,
+                    "minimum": -2147483648,
+                    "type": "integer"
+                  },
+                  "content_type": {
+                    "maxLength": 255,
+                    "minLength": 3,
+                    "type": "string"
+                  },
+                  "path": {
+                    "maxLength": 255,
+                    "minLength": 1,
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "path",
+                  "content_type",
+                  "content_length"
+                ],
+                "type": "object"
+              },
+              "maxItems": 100,
+              "minItems": 0,
+              "type": "array"
+            },
+            "user_ids": {
+              "items": {
+                "maxLength": 36,
+                "minLength": 36,
+                "type": "string"
+              },
+              "maxItems": 100,
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "RequestById": {
+          "$ref": "http://localhost/Investible#/$defs/Request",
+          "properties": {
+            "investible_id": {
+              "maxLength": 36,
+              "minLength": 36,
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "RequestByName": {
+          "$ref": "http://localhost/Investible#/$defs/Request",
+          "properties": {
+            "name ": {
+              "maxLength": 255,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "Schema": {
+          "anyOf": [
+            {
+              "$ref": "http://localhost/Investible#/$defs/RequestByName"
+            },
+            {
+              "$ref": "http://localhost/Investible#/$defs/RequestById"
+            }
+          ]
+        }
+      },
+      "$id": "http://localhost/Investible",
+      "$schema": "https://json-schema.org/draft/2020-12/schema"
+    }
+  },
+  "$id": "http://localhost/",
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}
